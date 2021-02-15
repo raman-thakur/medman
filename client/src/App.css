@@ -1,0 +1,81 @@
+.nav-wrapper{
+  background-image: linear-gradient(blue,red);
+}
+
+.sidenav{
+  background-image: linear-gradient(blue,red);
+}
+
+/*.nav-wrapper a:hover{
+  color: #00ff00;
+  border-radius: 15px;
+}*/
+.sidenav .dropdown-trigger,.sidenav .material-icons{
+  color: white !important;
+}
+
+.hbg{
+  background-size: cover;
+  background-position: center;
+  height: 560px;
+  width: 100%;
+}
+
+img{
+  height: 100px;
+  width: 100px;
+}
+
+.card{
+  background-image: linear-gradient(maroon,blue);
+}
+.card-title{
+  background-color: black;
+  text-align: center;
+  padding-top:2px; 
+  padding-bottom:3px; 
+}
+
+.btn{
+  border: 1px solid black;
+  margin-right: 10px;
+}
+
+th,td{
+  padding: 0px !important;
+}
+tr{
+  border: none !important;
+}
+
+::placeholder { 
+  opacity: 0.4;
+}
+
+input{
+  color: white;
+}
+
+.card-action .btn:nth-child(1){
+  background-image: linear-gradient(red,red);
+}
+
+.card-action .btn:nth-child(2){
+  background-image: linear-gradient(green,green);
+}
+
+.dropdown-content{
+  position: relative;
+  top: -63px;
+  border-radius: 0 30px 0 30px; 
+}
+
+.dc{
+  position: relative;
+  top: -50px;
+}
+
+
+.dropdown-content li a{
+  color: black;
+}
