@@ -20,7 +20,6 @@ import ViewPurchase from './components/screens/ViewPurchase';
 
 import Login from './components/screens/Login';
 import Signup from './components/screens/Signup';
-   
 
 function App() {  
 

@@ -8,6 +8,14 @@ const AddEmployee=()=>{
 		<div className="hbg" style={{backgroundImage:"url('./images/bg1.jpg')"}}>
 			<div class="row">
 			    <div class="col s12 m8 offset-m2 l8 offset-l2">
+			        	<div className="hh">
+				          <a href="addEmployee" className="btn1" style={{passing:"5px"}}>Add Employee</a>
+				          <a href="viewEmployee" style={{passing:"5px"}}>View Employee</a>
+				        </div>
+			    </div>
+		    </div>
+			<div class="row">
+			    <div class="col s12 m8 offset-m2 l8 offset-l2">
 			      <div class="card blue-grey darken-1">
 			        <div class="card-content white-text">
 			          <div class="card-title">Add Employee Details</div>

@@ -1,4 +1,4 @@
-.nav-wrapper{
+nav{
   background-image: linear-gradient(blue,red);
 }
 
@@ -17,9 +17,11 @@
 .hbg{
   background-size: cover;
   background-position: center;
+  background-attachment: fixed;
   height: 560px;
   width: 100%;
 }
+
 
 img{
   height: 100px;
@@ -78,4 +80,41 @@ input{
 
 .dropdown-content li a{
   color: black;
+}
+
+
+@media only screen and (max-width: 992px){
+  .brand-logo{
+    left: 100px !important;
+  }
+}
+
+.btn1{
+  border-bottom: 2px solid yellow;
+}
+
+
+.row{
+  margin-bottom: 0px !important;
+}
+.card{
+  max-height: 450px !important;
+}
+
+.hh{
+   display: flex;
+   justify-content: space-around;
+   padding: 10px;
+   margin-top: 7px;
+   background-image: linear-gradient(maroon,blue);
+}
+
+.res{
+  overflow-x: auto;
+  overflow-y: auto;
+}
+
+.table th,.table td{
+  border: 1px solid gray;
+  padding: 10px !important;
 }
