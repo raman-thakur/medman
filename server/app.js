@@ -113,5 +113,5 @@ app.post("/medicine", jasonParser, function (req, res) {
 });
 
 app.listen(PORT, () => {
-  console.log("Server is running on port", PORT);
+  console.log("Server is running on port go and see on that port", PORT);
 });
