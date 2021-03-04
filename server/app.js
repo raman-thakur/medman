@@ -13,6 +13,8 @@ const User = require("./models/user");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const cookieParser = require("cookie-parser");
+const cors = require("cors");
+app.use(cors());
 
 const saltRounds = 10;
 const PORT = 5000;
