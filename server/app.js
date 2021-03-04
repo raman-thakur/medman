@@ -11,8 +11,10 @@ const Purchase = require("./models/purchase");
 const Medicine = require("./models/medicine");
 const User = require("./models/user");
 const jwt = require("jsonwebtoken");
+const bcrypt = require("bcrypt");
 const cookieParser = require("cookie-parser");
 
+const saltRounds = 10;
 const PORT = 5000;
 const jwtkey = "ramanjithakur";
 
@@ -35,6 +37,52 @@ app.get("/", (req, res) => {
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////POST ROUTES//////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+app.post("/register", jasonParser, function (req, res) {
+  let data = new User({
+    _id: mongoose.Types.ObjectId(),
+    name: req.body.name,
+    email: req.body.email,
+    address: req.body.address,
+    password: req.body.password,
+  });
+
+  User.findOne({ email: req.body.email }).then((data) => {
+    if (data) res.end("this email already exist");
+  });
+
+  bcrypt.hash(req.body.password, saltRounds, function (err, hash) {
+    if (err) throw err;
+
+    data.password = hash;
+    data.save().then((result) => {
+      jwt.sign({ result }, jwtkey, { expiresIn: "30000d" }, (err, token) => {
+        res.cookie("jwt", token);
+        console.warn(token);
+        res.end("done");
+      });
+    });
+  });
+});
+
+app.post("/login", jasonParser, function (req, res) {
+  User.findOne({ email: req.body.email }).then((data) => {
+    console.warn(data);
+    var password2 = req.body.password;
+    bcrypt.compare(password2, data.password, function (err, result) {
+      if (result) {
+        console.warn("matches bruhhh");
+        jwt.sign({ data }, jwtkey, { expiresIn: "30000d" }, (err, token) => {
+          res.cookie("jwt", token);
+          res.end("coockie is now set to browser");
+        });
+      } else {
+        console.warn("Invalid password!");
+        res.end("login credentials are wrong");
+      }
+    });
+  });
+});
 
 app.post("/purchase", jasonParser, function (req, res) {
   let data = new Purchase({
@@ -112,24 +160,6 @@ app.post("/medicine", jasonParser, function (req, res) {
   data.save().then((result) => {
     console.warn(result);
     res.end("done");
-  });
-});
-
-app.post("/login", jasonParser, function (req, res) {
-  User.findOne({ email: req.body.email }).then((data) => {
-    var password2 = req.body.password;
-
-    if (password2 == data.password) {
-      console.warn("matches bruhhh");
-      jwt.sign({ data }, jwtkey, { expiresIn: "30000d" }, (err, token) => {
-        vartoken = token;
-        res.cookie("jwt", token);
-        res.end("jwt done");
-      });
-    } else {
-      console.warn("Invalid password!");
-      res.end("password wrong");
-    }
   });
 });
 
