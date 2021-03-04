@@ -4,14 +4,17 @@ let bodyParser = require("body-parser");
 app.use(express.urlencoded({ extended: true }));
 let jasonParser = bodyParser.json();
 const mongoose = require("mongoose");
-
 const Customer = require("./models/customer");
 const Employee = require("./models/employee");
 const Dealer = require("./models/dealer");
 const Purchase = require("./models/purchase");
 const Medicine = require("./models/medicine");
+const User = require("./models/user");
+const jwt = require("jsonwebtoken");
+const cookieParser = require("cookie-parser");
 
 const PORT = 5000;
+const jwtkey = "ramanjithakur";
 
 mongoose
   .connect(
@@ -112,6 +115,24 @@ app.post("/medicine", jasonParser, function (req, res) {
   });
 });
 
+app.post("/login", jasonParser, function (req, res) {
+  User.findOne({ email: req.body.email }).then((data) => {
+    var password2 = req.body.password;
+
+    if (password2 == data.password) {
+      console.warn("matches bruhhh");
+      jwt.sign({ data }, jwtkey, { expiresIn: "30000d" }, (err, token) => {
+        vartoken = token;
+        res.cookie("jwt", token);
+        res.end("jwt done");
+      });
+    } else {
+      console.warn("Invalid password!");
+      res.end("password wrong");
+    }
+  });
+});
+
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////GET ROUTES///////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -149,6 +170,17 @@ app.get("/customer", (req, res) => {
     res.send(data);
   });
 });
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////MIDDLEWARES//////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+function verifyToken(req, res, next) {
+  console.warn(req.cookies.jwt);
+  jwt.verify(req.cookies.jwt, jwtkey, (err, authData) => {
+    if (err) res.redirect("/");
+    else next();
+  });
+}
 
 app.listen(PORT, () => {
   console.log("Server is running on port go and see on that port", PORT);
