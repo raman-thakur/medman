@@ -201,16 +201,28 @@ app.get("/customer", (req, res) => {
   });
 });
 
+app.get("/isloggedin", (req, res) => {
+  // if (req.cookies) res.send(req.cookies);
+  // if (req.cookies)
+  //   res.send({
+  //     loggedin: 1,
+  //   });
+  // else
+  res.send({
+    loggedin: 0,
+  });
+});
+
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////MIDDLEWARES//////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-function verifyToken(req, res, next) {
-  console.warn(req.cookies.jwt);
-  jwt.verify(req.cookies.jwt, jwtkey, (err, authData) => {
-    if (err) res.redirect("/");
-    else next();
-  });
-}
+// function verifyToken(req, res, next) {
+//   console.warn(req.cookies.jwt);
+//   jwt.verify(req.cookies.jwt, jwtkey, (err, authData) => {
+//     if (err) res.redirect("/");
+//     else next();
+//   });
+// }
 
 app.listen(PORT, () => {
   console.log("Server is running on port go and see on that port", PORT);
