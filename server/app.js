@@ -112,6 +112,44 @@ app.post("/medicine", jasonParser, function (req, res) {
   });
 });
 
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////GET ROUTES///////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+app.get("/", (req, res) => {
+  res.send("Hello World");
+});
+
+app.get("/medicine", (req, res) => {
+  Medicine.find().then((data) => {
+    res.send(data);
+  });
+});
+
+app.get("/employee", (req, res) => {
+  Employee.find().then((data) => {
+    res.send(data);
+  });
+});
+
+app.get("/dealer", (req, res) => {
+  Dealer.find().then((data) => {
+    res.send(data);
+  });
+});
+
+app.get("/purchase", (req, res) => {
+  Purchase.find().then((data) => {
+    res.send(data);
+  });
+});
+
+app.get("/customer", (req, res) => {
+  Customer.find().then((data) => {
+    res.send(data);
+  });
+});
+
 app.listen(PORT, () => {
   console.log("Server is running on port go and see on that port", PORT);
 });
