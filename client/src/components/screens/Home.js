@@ -5,15 +5,6 @@ import { react, useState, useEffect } from "react";
 import axios from "axios";
 
 const Home = () => {
-  // console.warn("okkkk");
-  const [loggedin, setloggedin] = useState(1);
-
-  useEffect(() => {
-    axios.get("http://localhost:5000/isloggedin").then((props) => {
-      setloggedin(props.data.loggedin);
-    });
-  }, []);
-
   let x = (
     <div
       className="hbg"
@@ -21,8 +12,7 @@ const Home = () => {
     ></div>
   );
 
-  if (loggedin === 0) return <h1>NOT LOGGEDIN</h1>;
-  else return x;
+  return x;
   //   return <h1>okkkkkkkkkkkkkkkkkkk</h1>;
 };
 

@@ -12,7 +12,6 @@ const Login = () => {
               <div class="card-title">Add Login Details</div>
               <form action="http://localhost:5000/login" method="POST">
                 <div>
-                  <label for="email">Enter email:</label>
                   <input
                     type="email"
                     name="email"
@@ -21,7 +20,6 @@ const Login = () => {
                   />
                 </div>
                 <div>
-                  <label for="password">Enter password:</label>
                   <input
                     type="password"
                     name="password"
@@ -29,7 +27,7 @@ const Login = () => {
                     placeholder="password"
                   />
                 </div>
-                <button>Sign in</button>
+                <button style={{ backgroundColor: "green" }}>Sign in</button>
               </form>
 
               <div style={{ display: "flex", justifyContent: "center" }}>
