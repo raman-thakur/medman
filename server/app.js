@@ -3,6 +3,7 @@ const app = express();
 let bodyParser = require("body-parser");
 app.use(express.urlencoded({ extended: true }));
 let jasonParser = bodyParser.json();
+
 const mongoose = require("mongoose");
 const Customer = require("./models/customer");
 const Employee = require("./models/employee");
@@ -13,6 +14,10 @@ const User = require("./models/user");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const cookieParser = require("cookie-parser");
+app.use(cookieParser());
+const http = require("http");
+const cors = require("cors");
+app.use(cors({ credentials: true, origin: "http://localhost:3000" }));
 
 const saltRounds = 10;
 const PORT = 5000;
@@ -48,7 +53,7 @@ app.post("/register", jasonParser, function (req, res) {
   });
 
   User.findOne({ email: req.body.email }).then((data) => {
-    if (data) res.end("this email already exist");
+    if (data) res.redirect("http://localhost:3000/");
   });
 
   bcrypt.hash(req.body.password, saltRounds, function (err, hash) {
@@ -58,8 +63,7 @@ app.post("/register", jasonParser, function (req, res) {
     data.save().then((result) => {
       jwt.sign({ result }, jwtkey, { expiresIn: "30000d" }, (err, token) => {
         res.cookie("jwt", token);
-        console.warn(token);
-        res.end("done");
+        res.redirect("http://localhost:3000/");
       });
     });
   });
@@ -67,6 +71,8 @@ app.post("/register", jasonParser, function (req, res) {
 
 app.post("/login", jasonParser, function (req, res) {
   User.findOne({ email: req.body.email }).then((data) => {
+    if (!data) res.redirect("http://localhost:3000/");
+
     console.warn(data);
     var password2 = req.body.password;
     bcrypt.compare(password2, data.password, function (err, result) {
@@ -74,11 +80,10 @@ app.post("/login", jasonParser, function (req, res) {
         console.warn("matches bruhhh");
         jwt.sign({ data }, jwtkey, { expiresIn: "30000d" }, (err, token) => {
           res.cookie("jwt", token);
-          res.end("coockie is now set to browser");
+          res.redirect("http://localhost:3000/");
         });
       } else {
-        console.warn("Invalid password!");
-        res.end("login credentials are wrong");
+        res.redirect("http://localhost:3000/");
       }
     });
   });
@@ -149,7 +154,7 @@ app.post("/employee", jasonParser, function (req, res) {
 app.post("/medicine", jasonParser, function (req, res) {
   let data = new Medicine({
     _id: mongoose.Types.ObjectId(),
-    code: req.body.coe,
+    code: req.body.code,
     name: req.body.name,
     dealername: req.body.dealername,
     description: req.body.description,
@@ -158,8 +163,7 @@ app.post("/medicine", jasonParser, function (req, res) {
   });
 
   data.save().then((result) => {
-    console.warn(result);
-    res.end("done");
+    res.redirect("http://localhost:3000/viewMedicine");
   });
 });
 
@@ -201,28 +205,22 @@ app.get("/customer", (req, res) => {
   });
 });
 
-app.get("/isloggedin", (req, res) => {
-  // if (req.cookies) res.send(req.cookies);
-  // if (req.cookies)
-  //   res.send({
-  //     loggedin: 1,
-  //   });
-  // else
+app.get("/isloggedin", verifyToken, (req, res) => {
   res.send({
-    loggedin: 0,
+    loggedin: 1,
   });
 });
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////MIDDLEWARES//////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// function verifyToken(req, res, next) {
-//   console.warn(req.cookies.jwt);
-//   jwt.verify(req.cookies.jwt, jwtkey, (err, authData) => {
-//     if (err) res.redirect("/");
-//     else next();
-//   });
-// }
+
+function verifyToken(req, res, next) {
+  jwt.verify(req.cookies.jwt, jwtkey, (err, authData) => {
+    if (err) res.send({ loggedin: 0 });
+    else next();
+  });
+}
 
 app.listen(PORT, () => {
   console.log("Server is running on port go and see on that port", PORT);

@@ -23,32 +23,54 @@ import Login from "./components/screens/Login";
 import Signup from "./components/screens/Signup";
 
 function App() {
-  return (
-    <BrowserRouter>
-      <Nav />
-      <Switch>
-        <Route exact path="/" component={Home} />
+  // console.warn("okkkk");
 
-        <Route exact path="/addDealer" component={AddDealer} />
-        <Route exact path="/viewDealer" component={ViewDealer} />
+  const [loggedin, setloggedin] = useState(0);
+  //let p = 1;
+  useEffect(() => {
+    console.log("useeffect called");
+    axios
+      .get("http://localhost:5000/isloggedin", { withCredentials: true })
+      .then((props) => {
+        setloggedin(props.data.loggedin);
+      });
+  }, []);
 
-        <Route exact path="/addMedicine" component={AddMedicine} />
-        <Route exact path="/viewMedicine" component={ViewMedicine} />
+  if (loggedin === 0) {
+    return (
+      <div>
+        <Nav />
+        <Login />
+      </div>
+    );
+  } else {
+    return (
+      <BrowserRouter>
+        <Nav />
+        <Switch>
+          <Route exact path="/" component={Home} />
 
-        <Route exact path="/addEmployee" component={AddEmployee} />
-        <Route exact path="/viewEmployee" component={ViewEmployee} />
+          <Route exact path="/addDealer" component={AddDealer} />
+          <Route exact path="/viewDealer" component={ViewDealer} />
 
-        <Route exact path="/addCustomer" component={AddCustomer} />
-        <Route exact path="/viewCustomer" component={ViewCustomer} />
+          <Route exact path="/addMedicine" component={AddMedicine} />
+          <Route exact path="/viewMedicine" component={ViewMedicine} />
 
-        <Route exact path="/addPurchase" component={AddPurchase} />
-        <Route exact path="/viewPurchase" component={ViewPurchase} />
+          <Route exact path="/addEmployee" component={AddEmployee} />
+          <Route exact path="/viewEmployee" component={ViewEmployee} />
 
-        <Route exact path="/login" component={Login} />
-        <Route exact path="/signup" component={Signup} />
-      </Switch>
-    </BrowserRouter>
-  );
+          <Route exact path="/addCustomer" component={AddCustomer} />
+          <Route exact path="/viewCustomer" component={ViewCustomer} />
+
+          <Route exact path="/addPurchase" component={AddPurchase} />
+          <Route exact path="/viewPurchase" component={ViewPurchase} />
+
+          <Route exact path="/login" component={Login} />
+          <Route exact path="/signup" component={Signup} />
+        </Switch>
+      </BrowserRouter>
+    );
+  }
 }
 
 export default App;
