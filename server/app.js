@@ -3,7 +3,7 @@ const app = express();
 let bodyParser = require("body-parser");
 app.use(express.urlencoded({ extended: true }));
 let jasonParser = bodyParser.json();
-
+const verifyToken = require("./middlewares/authentication");
 const mongoose = require("mongoose");
 const Customer = require("./models/customer");
 const Employee = require("./models/employee");
@@ -22,6 +22,9 @@ app.use(cors({ credentials: true, origin: "http://localhost:3000" }));
 const saltRounds = 10;
 const PORT = 5000;
 const jwtkey = "ramanjithakur";
+
+const dotenv = require("dotenv");
+dotenv.config({ path: "./config.env" });
 
 mongoose
   .connect(
@@ -61,10 +64,15 @@ app.post("/register", jasonParser, function (req, res) {
 
     data.password = hash;
     data.save().then((result) => {
-      jwt.sign({ result }, jwtkey, { expiresIn: "30000d" }, (err, token) => {
-        res.cookie("jwt", token);
-        res.redirect("http://localhost:3000/");
-      });
+      jwt.sign(
+        { result },
+        process.env.jwtkey,
+        { expiresIn: "30000d" },
+        (err, token) => {
+          res.cookie("jwt", token);
+          res.redirect("http://localhost:3000/");
+        }
+      );
     });
   });
 });
@@ -73,11 +81,9 @@ app.post("/login", jasonParser, function (req, res) {
   User.findOne({ email: req.body.email }).then((data) => {
     if (!data) res.redirect("http://localhost:3000/");
 
-    console.warn(data);
     var password2 = req.body.password;
     bcrypt.compare(password2, data.password, function (err, result) {
       if (result) {
-        console.warn("matches bruhhh");
         jwt.sign({ data }, jwtkey, { expiresIn: "30000d" }, (err, token) => {
           res.cookie("jwt", token);
           res.redirect("http://localhost:3000/");
@@ -214,13 +220,6 @@ app.get("/isloggedin", verifyToken, (req, res) => {
 ////////////////////////////////////////////////////////////////////////MIDDLEWARES//////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-function verifyToken(req, res, next) {
-  jwt.verify(req.cookies.jwt, jwtkey, (err, authData) => {
-    if (err) res.send({ loggedin: 0 });
-    else next();
-  });
-}
-
-app.listen(PORT, () => {
-  console.log("Server is running on port go and see on that port", PORT);
+app.listen(process.env.PORT, () => {
+  console.log("Server is running on port", process.env.PORT);
 });
