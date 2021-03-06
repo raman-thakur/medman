@@ -103,8 +103,7 @@ app.post("/purchase", jasonParser, function (req, res) {
   });
 
   data.save().then((result) => {
-    console.warn(result);
-    res.end("done");
+    res.redirect("http://localhost:3000/viewPurchase");
   });
 });
 
@@ -119,7 +118,7 @@ app.post("/customer", jasonParser, function (req, res) {
 
   data.save().then((result) => {
     console.warn(result);
-    res.end("done");
+    res.redirect("http://localhost:3000/viewCustomer");
   });
 });
 
@@ -134,7 +133,7 @@ app.post("/dealer", jasonParser, function (req, res) {
 
   data.save().then((result) => {
     console.warn(result);
-    res.end("done");
+    res.redirect("http://localhost:3000/viewDealer");
   });
 });
 
@@ -150,7 +149,7 @@ app.post("/employee", jasonParser, function (req, res) {
   // console.warn(req);
   data.save().then((result) => {
     console.warn(result);
-    res.end("done");
+    res.redirect("http://localhost:3000/viewEmployee");
   });
 });
 

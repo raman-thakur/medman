@@ -1,58 +1,96 @@
-import React from 'react';
-import '../../App.css';
-import M from 'materialize-css';
+import React from "react";
+import "../../App.css";
+import M from "materialize-css";
 
+const AddPurchase = () => {
+  return (
+    <div className="hbg" style={{ backgroundImage: "url('./images/bg1.jpg')" }}>
+      <div class="row">
+        <div class="col s12 m8 offset-m2 l8 offset-l2">
+          <div className="hh">
+            <a href="addPurchase" className="btn1" style={{ passing: "5px" }}>
+              Add Purchase
+            </a>
+            <a href="viewPurchase" style={{ passing: "5px" }}>
+              View Purchase
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col s12 m8 offset-m2 l8 offset-l2">
+          <div class="card blue-grey darken-1">
+            <div class="card-content white-text">
+              <div class="card-title">Add Purchase Details</div>
+              <form
+                action="http://localhost:5000/purchase"
+                method="POST"
+                className="form"
+              >
+                <div className="div1">
+                  <label className="label">Product name:</label>
+                  <div className="input1">
+                    <input
+                      type="text"
+                      name="productname"
+                      id="productname"
+                      placeholder="product name"
+                    />
+                  </div>
+                </div>
+                <div className="div1">
+                  <label className="label">Customer name:</label>
+                  <div className="input1">
+                    <input
+                      type="text"
+                      name="customername"
+                      id="customername"
+                      placeholder="customer name"
+                    />
+                  </div>
+                </div>
+                <div className="div1">
+                  <label className="label">Phone:</label>
+                  <div className="input1">
+                    <input
+                      type="number"
+                      name="phone"
+                      id="phone"
+                      placeholder="customer phone"
+                    />
+                  </div>
+                </div>
+                <div className="div1">
+                  <label className="label">Price:</label>
+                  <div className="input1">
+                    <input
+                      type="number"
+                      name="price"
+                      id="price"
+                      placeholder="total price"
+                    />
+                  </div>
+                </div>
+                <div className="div1">
+                  <label className="label">Quantity:</label>
+                  <div className="input1">
+                    <input
+                      type="number"
+                      name="quantity"
+                      id="quantity"
+                      placeholder="purchase quantity"
+                    />
+                  </div>
+                </div>
 
-const AddPurchase=()=>{
-	return (
-		<div className="hbg" style={{backgroundImage:"url('./images/bg1.jpg')"}}>
-			<div class="row">
-			    <div class="col s12 m8 offset-m2 l8 offset-l2">
-			        	<div className="hh">
-				          <a href="addPurchase" className="btn1" style={{passing:"5px"}}>Add Purchase</a>
-				          <a href="viewPurchase" style={{passing:"5px"}}>View Purchase</a>
-				        </div>
-			    </div>
-		    </div>
-			<div class="row">
-			    <div class="col s12 m8 offset-m2 l8 offset-l2">
-			      <div class="card blue-grey darken-1">
-			        <div class="card-content white-text">
-			          <div class="card-title">Add Purchase Details</div>
-			            <table>
-					        <tbody>
-					          <tr>
-					            <td>Product Name:</td>
-					            <td><input type="text" placeholder="Product Name"/></td>
-					          </tr>
-					          <tr>
-					            <td>Customer Name:</td>
-					            <td><input type="text" placeholder="Customer Name"/></td>
-					          </tr>
-					          <tr>
-					            <td>Phone Number:</td>
-					            <td><input type="number" placeholder="Phone Number"/></td>
-					          </tr>
-					          <tr>
-					            <td>Price:</td>
-					            <td><input type="number" placeholder="Price"/></td>
-					          </tr>
-					          <tr>
-					            <td>Quantity:</td>
-					            <td><input type="number" placeholder="Quanity"/></td>
-					          </tr>
-					        </tbody>
-				        </table>
-				        <div class="card-action">
-				          <a href="#" className="btn">Cancel</a>
-				          <a href="#" className="btn">Add Record</a>
-				        </div>
-			        </div>
-			      </div>
-			    </div>
-		    </div>
-		</div>
-	);
-}
+                <button className="button1">Add Purchase</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
 
-export default AddPurchase; 
+export default AddPurchase;
