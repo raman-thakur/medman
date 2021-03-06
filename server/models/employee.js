@@ -8,7 +8,7 @@ let employeeSchema = new mongoose.Schema({
     unique: true,
   },
   address: { type: String },
-  phone: { type: Number },
+  phone: { type: String },
   salary: { type: Number },
 });
 

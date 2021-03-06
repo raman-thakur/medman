@@ -22,58 +22,78 @@ const AddMedicine = () => {
           <div class="card blue-grey darken-1">
             <div class="card-content white-text">
               <div class="card-title">Add Medicine Details</div>
-              <form action="http://localhost:5000/medicine" method="POST">
-                <div>
-                  <input
-                    type="text"
-                    name="code"
-                    id="code"
-                    placeholder="medicine code"
-                  />
+              <form
+                action="http://localhost:5000/medicine"
+                method="POST"
+                className="form"
+              >
+                <div className="div1">
+                  <label className="label">Code:</label>
+                  <div className="input1">
+                    <input
+                      type="text"
+                      name="code"
+                      id="code"
+                      placeholder="medicine code"
+                    />
+                  </div>
                 </div>
-                <div>
-                  <input
-                    type="text"
-                    name="name"
-                    id="name"
-                    placeholder="medicine name"
-                  />
+                <div className="div1">
+                  <label className="label">Name:</label>
+                  <div className="input1">
+                    <input
+                      type="text"
+                      name="name"
+                      id="name"
+                      placeholder="medicine name"
+                    />
+                  </div>
                 </div>
-                <div>
-                  <input
-                    type="text"
-                    name="dealername"
-                    id="dealername"
-                    placeholder="Dealer Name"
-                  />
+                <div className="div1">
+                  <label className="label">Dealer:</label>
+                  <div className="input1">
+                    <input
+                      type="text"
+                      name="dealername"
+                      id="dealername"
+                      placeholder="dealer name"
+                    />
+                  </div>
                 </div>
-                <div>
-                  <input
-                    type="text"
-                    name="description"
-                    id="description"
-                    placeholder="Description"
-                  />
+                <div className="div1">
+                  <label className="label">Description:</label>
+                  <div className="input1">
+                    <input
+                      type="text"
+                      name="description"
+                      id="description"
+                      placeholder="medicine description"
+                    />
+                  </div>
                 </div>
-                <div>
-                  <input
-                    type="number"
-                    name="price"
-                    id="price"
-                    placeholder="Price"
-                  />
+                <div className="div1">
+                  <label className="label">Price:</label>
+                  <div className="input1">
+                    <input
+                      type="text"
+                      name="price"
+                      id="price"
+                      placeholder="medicine price"
+                    />
+                  </div>
                 </div>
-                <div>
-                  <input
-                    type="number"
-                    name="stock"
-                    id="stock"
-                    placeholder="stock"
-                  />
+                <div className="div1">
+                  <label className="label">Stock:</label>
+                  <div className="input1">
+                    <input
+                      type="text"
+                      name="stock"
+                      id="stock"
+                      placeholder="available stock"
+                    />
+                  </div>
                 </div>
-                <button style={{ backgroundColor: "green" }}>
-                  Add medicine
-                </button>
+                <button className="button1">Add medicine</button>
               </form>
             </div>
           </div>
