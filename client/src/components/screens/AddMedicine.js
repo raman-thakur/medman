@@ -1,4 +1,5 @@
-import React from "react";
+import { react, useState, useEffect } from "react";
+import axios from "axios";
 import "../../App.css";
 import M from "materialize-css";
 
@@ -75,7 +76,7 @@ const AddMedicine = () => {
                   <label className="label">Price:</label>
                   <div className="input1">
                     <input
-                      type="text"
+                      type="number"
                       name="price"
                       id="price"
                       placeholder="medicine price"
@@ -86,7 +87,7 @@ const AddMedicine = () => {
                   <label className="label">Stock:</label>
                   <div className="input1">
                     <input
-                      type="text"
+                      type="number"
                       name="stock"
                       id="stock"
                       placeholder="available stock"
