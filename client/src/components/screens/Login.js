@@ -10,26 +10,35 @@ const Login = () => {
           <div class="card blue-grey darken-1">
             <div class="card-content white-text">
               <div class="card-title">Add Login Details</div>
-              <form action="http://localhost:5000/login" method="POST">
-                <div>
-                  <input
-                    type="email"
-                    name="email"
-                    id="email"
-                    placeholder="email"
-                  />
+              <form
+                action="http://localhost:5000/login"
+                method="POST"
+                className="form"
+              >
+                <div className="div1">
+                  <label className="label">Email:</label>
+                  <div className="input1">
+                    <input
+                      type="text"
+                      name="email"
+                      id="email"
+                      placeholder="User email"
+                    />
+                  </div>
                 </div>
-                <div>
-                  <input
-                    type="password"
-                    name="password"
-                    id="password"
-                    placeholder="password"
-                  />
+                <div className="div1">
+                  <label className="label">Password:</label>
+                  <div className="input1">
+                    <input
+                      type="password"
+                      name="password"
+                      id="password"
+                      placeholder="password"
+                    />
+                  </div>
                 </div>
-                <button style={{ backgroundColor: "green" }}>Sign in</button>
+                <button className="button1">Login</button>
               </form>
-
               <div style={{ display: "flex", justifyContent: "center" }}>
                 <p style={{ paddingRight: "10px" }}>Don't have any account?</p>
                 <a href="/signup">Signup</a>

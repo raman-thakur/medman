@@ -28,7 +28,6 @@ function App() {
   const [loggedin, setloggedin] = useState(0);
   //let p = 1;
   useEffect(() => {
-    console.log("useeffect called");
     axios
       .get("http://localhost:5000/isloggedin", { withCredentials: true })
       .then((props) => {
