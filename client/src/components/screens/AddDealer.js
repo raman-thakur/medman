@@ -71,7 +71,9 @@ const AddDealer = () => {
                     />
                   </div>
                 </div>
-                <button className="button1">Add dealer</button>
+                <div className="buttondiv">
+                  <button className="button1">Add Dealer</button>
+                </div>
               </form>
             </div>
           </div>
