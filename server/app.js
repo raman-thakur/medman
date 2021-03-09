@@ -14,10 +14,13 @@ const User = require("./models/user");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const cookieParser = require("cookie-parser");
+
 app.use(cookieParser());
 const http = require("http");
 const cors = require("cors");
 app.use(cors({ credentials: true, origin: "http://localhost:3000" }));
+
+
 
 const saltRounds = 10;
 const PORT = 5000;
