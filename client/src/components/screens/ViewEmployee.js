@@ -18,6 +18,7 @@ const ViewEmployee = () => {
       setemployees(arr);
     });
   }, []);
+
   if (employees.length < 1) {
     return (
       <div
@@ -88,7 +89,9 @@ const ViewEmployee = () => {
     for (var i = 0; i < employees.length; i++) {
       listelement.push(
         <tr key={i}>
-          <td>{employees[i]._id}</td>
+          <td>
+            <a href="http://localhost:5000">{employees[i]._id}</a>
+          </td>
           <td>{employees[i].name}</td>
           <td>{employees[i].address}</td>
           <td>{employees[i].salary}</td>

@@ -131,17 +131,49 @@ input {
   display: flex;
 }
 
+.buttondiv {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .button1 {
-  background-color: #09f811;
+  background-color: #05a000;
   border: none;
   color: white;
   padding: 1.5% 1.5%;
   text-align: center;
   text-decoration: none;
-  display: inline-block;
   border-radius: 5%;
   font-size: 16px;
-  margin-left: 40%;
-  margin-top: 1%;
+  margin-right: 1%;
+  margin-top: 2%;
   cursor: pointer;
+  transition: transform 0.2s;
+}
+.button2 {
+  background-color: #b60303;
+  border: none;
+  color: white;
+  padding: 1.5% 1.5%;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 5%;
+  font-size: 16px;
+  margin-right: 1%;
+  margin-top: 2%;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.button1:hover {
+  transform: scale(
+    1.25
+  ); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+}
+
+.button2:hover {
+  transform: scale(
+    1.25
+  ); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
 }

@@ -71,7 +71,9 @@ const AddCustomer = () => {
                     />
                   </div>
                 </div>
-                <button className="button1">Add customer</button>
+                <div className="buttondiv">
+                  <button className="button1">Add customer</button>
+                </div>
               </form>
             </div>
           </div>
