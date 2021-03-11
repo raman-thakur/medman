@@ -87,6 +87,11 @@ const ViewPurchase = () => {
     for (var i = 0; i < purchases.length; i++) {
       listelement.push(
         <tr key={i}>
+          <td>
+            <a href={"http://localhost:3000/purchase/" + purchases[i]._id}>
+              {purchases[i]._id}
+            </a>
+          </td>
           <td>{purchases[i].productname}</td>
           <td>{purchases[i].customername}</td>
           <td>{purchases[i].phone}</td>
@@ -125,6 +130,7 @@ const ViewPurchase = () => {
                 <table className="table">
                   <thead>
                     <tr>
+                      <th>Purchase ID</th>
                       <th>Product Name</th>
                       <th>Customer Name</th>
                       <th>Phone Number</th>

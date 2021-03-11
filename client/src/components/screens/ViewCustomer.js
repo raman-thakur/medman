@@ -87,7 +87,11 @@ const ViewCustomer = () => {
     for (var i = 0; i < customers.length; i++) {
       listelement.push(
         <tr key={i}>
-          <td>{customers[i]._id}</td>
+          <td>
+            <a href={"http://localhost:3000/customer/" + customers[i]._id}>
+              {customers[i]._id}
+            </a>
+          </td>
           <td>{customers[i].name}</td>
           <td>{customers[i].address}</td>
           <td>{customers[i].phone}</td>

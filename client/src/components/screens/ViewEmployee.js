@@ -90,7 +90,9 @@ const ViewEmployee = () => {
       listelement.push(
         <tr key={i}>
           <td>
-            <a href="http://localhost:5000">{employees[i]._id}</a>
+            <a href={"http://localhost:3000/employee/" + employees[i]._id}>
+              {employees[i]._id}
+            </a>
           </td>
           <td>{employees[i].name}</td>
           <td>{employees[i].address}</td>
