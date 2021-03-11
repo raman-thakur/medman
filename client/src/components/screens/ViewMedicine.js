@@ -92,11 +92,16 @@ const ViewMedicine = () => {
     for (var i = 0; i < medicines.length; i++) {
       listelement.push(
         <tr key={i}>
+          <td>
+            <a href={"http://localhost:3000/medicine/" + medicines[i]._id}>
+              {medicines[i]._id}
+            </a>
+          </td>
           <td>{medicines[i].code}</td>
           <td>{medicines[i].name}</td>
           <td>{medicines[i].dealername}</td>
           <td>{medicines[i].price}</td>
-          <td>{medicines[i].stock}</td>
+
           <td>{medicines[i].description}</td>
         </tr>
         //   <h1>{purchases[i].customername}</h1>
@@ -131,12 +136,12 @@ const ViewMedicine = () => {
                 <table className="table">
                   <thead>
                     <tr>
+                      <th>Medicine ID</th>
                       <th>Medicine Code</th>
                       <th>Medicine Name</th>
 
                       <th>Dealer Name</th>
                       <th>Price</th>
-                      <th>Stock</th>
                       <th>Description</th>
                     </tr>
                   </thead>
