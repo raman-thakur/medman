@@ -1,8 +1,13 @@
 import React from "react";
 import "../../App.css";
 import M from "materialize-css";
+import ReactDOM from "react-dom";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { useParams } from "react-router";
 
 const AddCustomer = () => {
+  // let { id } = useParams();
+  // return <h2>User {id}</h2>;
   return (
     <div
       className="hbg"
