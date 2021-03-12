@@ -219,6 +219,40 @@ app.get("/isloggedin", verifyToken, (req, res) => {
   });
 });
 
+app.get("/customer/:id", jasonParser, (req, res) => {
+  const { id } = req.params;
+  Customer.findById(id).then((data) => {
+    res.send(data);
+  });
+});
+
+app.get("/purchase/:id", jasonParser, (req, res) => {
+  const { id } = req.params;
+  Purchase.findById(id).then((data) => {
+    res.send(data);
+  });
+});
+
+app.get("/dealer/:id", jasonParser, (req, res) => {
+  const { id } = req.params;
+  Dealer.findById(id).then((data) => {
+    res.send(data);
+  });
+});
+
+app.get("/medicine/:id", jasonParser, (req, res) => {
+  const { id } = req.params;
+  Medicine.findById(id).then((data) => {
+    res.send(data);
+  });
+});
+
+app.get("/employee/:id", jasonParser, (req, res) => {
+  const { id } = req.params;
+  Employee.findById(id).then((data) => {
+    res.send(data);
+  });
+});
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////PUT ROUTES///////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
