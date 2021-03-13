@@ -4,6 +4,8 @@ import "../../App.css";
 import M from "materialize-css";
 
 const AddMedicine = () => {
+  let x = window.location.href;
+  x = x.slice(1 + x.lastIndexOf("/"), x.length);
   return (
     <div
       className="hbg"
@@ -15,7 +17,7 @@ const AddMedicine = () => {
             <div class="card-content white-text">
               <div class="card-title">Update Medicine Details</div>
               <form
-                action="http://localhost:5000/medicine"
+                action={"http://localhost:5000/medicine/:" + x + "?_method=PUT"}
                 method="POST"
                 className="form"
               >
