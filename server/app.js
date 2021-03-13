@@ -260,14 +260,64 @@ app.get("/employee/:id", jasonParser, (req, res) => {
 ////////////////////////////////////////////////////////////////////////PUT ROUTES///////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-app.put("/customer/:id/edit", jasonParser, async (req, res) => {
-  const { id } = req.params;
+app.put("/customer/:id", jasonParser, async (req, res) => {
+  let { id } = req.params; //this is for production
+  id = id.slice(1, id.length); //this is for running
+
   const prevcustomer = await Customer.findById(id);
   await Customer.findByIdAndUpdate(id, req.body, {
     runValidators: true,
     new: true,
   });
-  res.send(req.body);
+  res.send("hiii");
+});
+
+app.put("/dealer/:id", jasonParser, async (req, res) => {
+  let { id } = req.params;
+  id = id.slice(1, id.length);
+  // /console.log(id);
+  const prevcustomer = await Dealer.findById(id);
+  await Dealer.findByIdAndUpdate(id, req.body, {
+    runValidators: true,
+    new: true,
+  });
+  res.send("hiii");
+});
+
+app.put("/employee/:id", jasonParser, async (req, res) => {
+  let { id } = req.params;
+  id = id.slice(1, id.length);
+  // /console.log(id);
+  const prevcustomer = await Employee.findById(id);
+  await Employee.findByIdAndUpdate(id, req.body, {
+    runValidators: true,
+    new: true,
+  });
+  res.send("hiii");
+});
+
+app.put("/purchase/:id", jasonParser, async (req, res) => {
+  let { id } = req.params;
+  id = id.slice(1, id.length);
+  // /console.log(id);
+  const prevcustomer = await Purchase.findById(id);
+  await Purchase.findByIdAndUpdate(id, req.body, {
+    runValidators: true,
+    new: true,
+  });
+  res.send("hiii");
+});
+
+app.put("/medicine/:id", jasonParser, async (req, res) => {
+  let { id } = req.params;
+  id = id.slice(1, id.length);
+  // /console.log(id);
+  const prevcustomer = await Medicine.findById(id);
+  await Medicine.findByIdAndUpdate(id, req.body, {
+    runValidators: true,
+    new: true,
+  });
+  res.send("hiii");
 });
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////MIDDLEWARES//////////////////////////////////////////////////////////////////////////

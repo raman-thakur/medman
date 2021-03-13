@@ -3,6 +3,8 @@ import "../../App.css";
 import M from "materialize-css";
 
 const AddDealer = () => {
+  let x = window.location.href;
+  x = x.slice(1 + x.lastIndexOf("/"), x.length);
   return (
     <div
       className="hbg"
@@ -14,7 +16,7 @@ const AddDealer = () => {
             <div class="card-content white-text">
               <div class="card-title">Update Dealer Details</div>
               <form
-                action="http://localhost:5000/dealer"
+                action={"http://localhost:5000/dealer/:" + x + "?_method=PUT"}
                 method="POST"
                 className="form"
               >
@@ -64,7 +66,6 @@ const AddDealer = () => {
                 </div>
                 <div className="buttondiv">
                   <button className="button1">Update dealer</button>
-                  <button className="button2">delete dealer</button>
                 </div>
               </form>
             </div>
