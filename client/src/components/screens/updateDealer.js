@@ -3,10 +3,38 @@ import axios from "axios";
 import "../../App.css";
 import M from "materialize-css";
 
-const AddDealer = () => {
+function AddDealer() {
+  const [name, setname] = useState("raman");
+  const [email, setemail] = useState("raman");
+  const [address, setaddress] = useState("raman");
+  const [phone, setphone] = useState("raman");
+
   let x = window.location.href;
   x = x.slice(1 + x.lastIndexOf("/"), x.length);
-  //   const [val, setval] = useState("raman");
+
+  useEffect(() => {
+    console.log("called useeffect");
+    axios.get("http://localhost:5000/dealer/" + x).then((prop) => {
+      setname(prop.data.name);
+      setaddress(prop.data.address);
+      setemail(prop.data.email);
+      setphone(prop.data.phone);
+    });
+  }, [x]);
+
+  function namehandler(e) {
+    setname(e.target.value);
+  }
+  function phonehandler(e) {
+    setphone(e.target.value);
+  }
+  function emailhandler(e) {
+    setemail(e.target.value);
+  }
+  function addresshandler(e) {
+    setaddress(e.target.value);
+  }
+
   return (
     <div
       className="hbg"
@@ -30,6 +58,8 @@ const AddDealer = () => {
                       name="name"
                       id="name"
                       placeholder="dealer name"
+                      value={name}
+                      onChange={namehandler}
                     />
                   </div>
                 </div>
@@ -41,6 +71,8 @@ const AddDealer = () => {
                       name="email"
                       id="email"
                       placeholder="dealer email"
+                      value={email}
+                      onChange={emailhandler}
                     />
                   </div>
                 </div>
@@ -52,6 +84,8 @@ const AddDealer = () => {
                       name="phone"
                       id="phone"
                       placeholder="dealer phone no."
+                      value={phone}
+                      onChange={phonehandler}
                     />
                   </div>
                 </div>
@@ -63,6 +97,8 @@ const AddDealer = () => {
                       name="address"
                       id="address"
                       placeholder="dealer address"
+                      value={address}
+                      onChange={addresshandler}
                     />
                   </div>
                 </div>
@@ -76,6 +112,6 @@ const AddDealer = () => {
       </div>
     </div>
   );
-};
+}
 
 export default AddDealer;

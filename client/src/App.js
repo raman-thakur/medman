@@ -28,7 +28,7 @@ import updateDealer from "./components/screens/updateDealer";
 import updatePurchase from "./components/screens/updatePurchase";
 import updateEmployee from "./components/screens/updateEmployee";
 import updateMedicine from "./components/screens/updateMedicine";
-
+import example from "./components/screens/example";
 /////////////////////////////////////////////customer updation and delation//////////////////////////////////
 
 function App() {
@@ -76,11 +76,11 @@ function App() {
           <Route exact path="/login" component={Login} />
           <Route exact path="/signup" component={Signup} />
 
-          <Route path="/customer/:id" children={updateCustomer} />
-          <Route path="/dealer/:id" children={updateDealer} />
-          <Route path="/medicine/:id" children={updateMedicine} />
-          <Route path="/purchase/:id" children={updatePurchase} />
-          <Route path="/employee/:id" children={updateEmployee} />
+          <Route path="/customer/:id" component={updateCustomer} />
+          <Route path="/dealer/:id" component={updateDealer} />
+          <Route path="/medicine/:id" component={updateMedicine} />
+          <Route path="/purchase/:id" component={updatePurchase} />
+          <Route path="/employee/:id" component={updateEmployee} />
         </Switch>
       </BrowserRouter>
     );

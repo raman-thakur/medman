@@ -1,10 +1,44 @@
-import React from "react";
+import { React, useState, useEffect } from "react";
+import axios from "axios";
 import "../../App.css";
 import M from "materialize-css";
 
 const AddEmployee = () => {
+  const [name, setname] = useState("raman");
+  const [email, setemail] = useState("@gmail");
+  const [address, setaddress] = useState("burdwan");
+  const [phone, setphone] = useState("123123123213");
+  const [salary, setsalary] = useState(2212);
+
   let x = window.location.href;
   x = x.slice(1 + x.lastIndexOf("/"), x.length);
+
+  useEffect(() => {
+    console.log("called useeffect");
+    axios.get("http://localhost:5000/employee/" + x).then((prop) => {
+      setname(prop.data.name);
+      setemail(prop.data.email);
+      setaddress(prop.data.address);
+      setphone(prop.data.phone);
+      setsalary(prop.data.salary);
+    });
+  }, [x]);
+
+  function namehandler(e) {
+    setname(e.target.value);
+  }
+  function emailhandler(e) {
+    setemail(e.target.value);
+  }
+  function phonehandler(e) {
+    setphone(e.target.value);
+  }
+  function salaryhandler(e) {
+    setsalary(e.target.value);
+  }
+  function addresshandler(e) {
+    setaddress(e.target.value);
+  }
   return (
     <div
       className="hbg"
@@ -28,6 +62,8 @@ const AddEmployee = () => {
                       name="name"
                       id="name"
                       placeholder="employee name"
+                      value={name}
+                      onChange={namehandler}
                     />
                   </div>
                 </div>
@@ -39,6 +75,8 @@ const AddEmployee = () => {
                       name="address"
                       id="address"
                       placeholder="employee address"
+                      value={address}
+                      onChange={addresshandler}
                     />
                   </div>
                 </div>
@@ -50,6 +88,8 @@ const AddEmployee = () => {
                       name="salary"
                       id="salary"
                       placeholder="employee salary"
+                      value={salary}
+                      onChange={salaryhandler}
                     />
                   </div>
                 </div>
@@ -61,6 +101,8 @@ const AddEmployee = () => {
                       name="phone"
                       id="phone"
                       placeholder="Employee phone no."
+                      value={phone}
+                      onChange={phonehandler}
                     />
                   </div>
                 </div>
@@ -72,6 +114,8 @@ const AddEmployee = () => {
                       name="email"
                       id="email"
                       placeholder="Employee email"
+                      value={email}
+                      onChange={emailhandler}
                     />
                   </div>
                 </div>
