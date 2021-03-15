@@ -1,10 +1,12 @@
-import React from "react";
+import { React, useState, useEffect } from "react";
+import axios from "axios";
 import "../../App.css";
 import M from "materialize-css";
 
 const AddDealer = () => {
   let x = window.location.href;
   x = x.slice(1 + x.lastIndexOf("/"), x.length);
+  //   const [val, setval] = useState("raman");
   return (
     <div
       className="hbg"

@@ -1,7 +1,18 @@
-import { react, useState, useEffect } from "react";
+import { react, useState } from "react";
 import axios from "axios";
 import "../../App.css";
 import M from "materialize-css";
+
+// function App() {
+//   const [val, setval] = useState("raman");
+//   function onchange(e) {
+//     setval(e.target.value);
+//   }
+
+//   return <input type="text" value={val} onChange={onchange} />;
+// }
+
+// export default App;
 
 const AddMedicine = () => {
   let x = window.location.href;
