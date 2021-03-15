@@ -266,7 +266,7 @@ app.put("/customer/:id", jasonParser, async (req, res) => {
     runValidators: true,
     new: true,
   });
-  res.send("hiii");
+  res.redirect("http://localhost:3000/viewCustomer");
 });
 
 app.put("/dealer/:id", jasonParser, async (req, res) => {
@@ -278,7 +278,7 @@ app.put("/dealer/:id", jasonParser, async (req, res) => {
     runValidators: true,
     new: true,
   });
-  res.send("hiii");
+  res.redirect("http://localhost:3000/viewDealer");
 });
 
 app.put("/employee/:id", jasonParser, async (req, res) => {
@@ -290,7 +290,7 @@ app.put("/employee/:id", jasonParser, async (req, res) => {
     runValidators: true,
     new: true,
   });
-  res.send("hiii");
+  res.redirect("http://localhost:3000/viewEmployee");
 });
 
 app.put("/purchase/:id", jasonParser, async (req, res) => {
@@ -302,7 +302,7 @@ app.put("/purchase/:id", jasonParser, async (req, res) => {
     runValidators: true,
     new: true,
   });
-  res.send("hiii");
+  res.redirect("http://localhost:3000/viewPurchase");
 });
 
 app.put("/medicine/:id", jasonParser, async (req, res) => {
@@ -314,7 +314,7 @@ app.put("/medicine/:id", jasonParser, async (req, res) => {
     runValidators: true,
     new: true,
   });
-  res.send("hiii");
+  res.redirect("http://localhost:3000/viewMedicine");
 });
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////MIDDLEWARES//////////////////////////////////////////////////////////////////////////

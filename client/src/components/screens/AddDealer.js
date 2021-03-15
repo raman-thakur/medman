@@ -3,6 +3,7 @@ import "../../App.css";
 import M from "materialize-css";
 
 const AddDealer = () => {
+  const [val, setval] = useState("raman");
   return (
     <div className="hbg" style={{ backgroundImage: "url('./images/bg1.jpg')" }}>
       <div class="row">

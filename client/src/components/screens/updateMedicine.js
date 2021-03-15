@@ -1,22 +1,51 @@
-import { react, useState } from "react";
+import { React, useState, useEffect } from "react";
 import axios from "axios";
 import "../../App.css";
 import M from "materialize-css";
 
-// function App() {
-//   const [val, setval] = useState("raman");
-//   function onchange(e) {
-//     setval(e.target.value);
-//   }
-
-//   return <input type="text" value={val} onChange={onchange} />;
-// }
-
-// export default App;
-
 const AddMedicine = () => {
+  const [code, setcode] = useState("raman");
+  const [name, setname] = useState("raman");
+  const [dealername, setdealername] = useState("11111111111");
+  const [price, setprice] = useState(10);
+  const [stock, setstock] = useState(1);
+  const [description, setdescription] = useState("11111111111");
+
   let x = window.location.href;
   x = x.slice(1 + x.lastIndexOf("/"), x.length);
+
+  useEffect(() => {
+    console.log("called useeffect");
+    axios.get("http://localhost:5000/medicine/" + x).then((prop) => {
+      setcode(prop.data.code);
+      setdealername(prop.data.dealername);
+      setdescription(prop.data.description);
+      setname(prop.data.name);
+      setprice(prop.data.price);
+      setstock(prop.data.stock);
+    });
+  }, [x]);
+
+  function codehandler(e) {
+    setcode(e.target.value);
+  }
+  function namehandler(e) {
+    setname(e.target.value);
+  }
+  function dealernamehandler(e) {
+    setdealername(e.target.value);
+  }
+  function descriptionhandler(e) {
+    setdescription(e.target.value);
+  }
+
+  function pricehandler(e) {
+    setprice(e.target.value);
+  }
+  function stockhandler(e) {
+    setstock(e.target.value);
+  }
+
   return (
     <div
       className="hbg"
@@ -40,6 +69,8 @@ const AddMedicine = () => {
                       name="code"
                       id="code"
                       placeholder="medicine code"
+                      value={code}
+                      onChange={codehandler}
                     />
                   </div>
                 </div>
@@ -51,6 +82,8 @@ const AddMedicine = () => {
                       name="name"
                       id="name"
                       placeholder="medicine name"
+                      value={name}
+                      onChange={namehandler}
                     />
                   </div>
                 </div>
@@ -62,6 +95,8 @@ const AddMedicine = () => {
                       name="dealername"
                       id="dealername"
                       placeholder="dealer name"
+                      value={dealername}
+                      onChange={dealernamehandler}
                     />
                   </div>
                 </div>
@@ -73,6 +108,8 @@ const AddMedicine = () => {
                       name="description"
                       id="description"
                       placeholder="medicine description"
+                      value={description}
+                      onChange={descriptionhandler}
                     />
                   </div>
                 </div>
@@ -84,6 +121,8 @@ const AddMedicine = () => {
                       name="price"
                       id="price"
                       placeholder="medicine price"
+                      value={price}
+                      onChange={pricehandler}
                     />
                   </div>
                 </div>
@@ -95,12 +134,13 @@ const AddMedicine = () => {
                       name="stock"
                       id="stock"
                       placeholder="available stock"
+                      value={stock}
+                      onChange={stockhandler}
                     />
                   </div>
                 </div>
                 <div className="buttondiv">
                   <button className="button1">Update medicine</button>
-                  <button className="button2">delete medicine</button>
                 </div>
               </form>
             </div>
