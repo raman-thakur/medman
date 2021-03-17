@@ -177,3 +177,16 @@ input {
     1.25
   ); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
 }
+
+
+.formdelete{
+  
+  /* padding: 1.5% 1.5%; */
+  text-align: center;
+  
+  
+  font-size: 16px;
+  margin-right: 1%;
+  margin-top: 2%;
+  
+}

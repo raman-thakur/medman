@@ -122,6 +122,17 @@ const AddEmployee = () => {
 
                 <div className="buttondiv">
                   <button className="button1">Update Employee</button>
+                  <form
+                    className="formdelete"
+                    action={
+                      "http://localhost:5000/employee/delete/:" +
+                      x +
+                      "?_method=DELETE"
+                    }
+                    method="POST"
+                  >
+                    <button className="button2">Delete employee</button>
+                  </form>
                 </div>
               </form>
             </div>

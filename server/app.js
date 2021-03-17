@@ -320,6 +320,48 @@ app.put("/medicine/:id", jasonParser, async (req, res) => {
   res.redirect("http://localhost:3000/viewMedicine");
 });
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////PUT ROUTES///////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+app.delete("/medicine/delete/:id", jasonParser, async (req, res) => {
+  let { id } = req.params;
+  id = id.slice(1, id.length);
+  await Medicine.findByIdAndDelete(id);
+  res.redirect("http://localhost:3000/viewMedicine");
+  // res.send("hii");
+});
+
+app.delete("/employee/delete/:id", jasonParser, async (req, res) => {
+  let { id } = req.params;
+  id = id.slice(1, id.length);
+  await Employee.findByIdAndDelete(id);
+  res.redirect("http://localhost:3000/viewEmployee");
+  // res.send("hii");
+});
+
+app.delete("/dealer/delete/:id", jasonParser, async (req, res) => {
+  let { id } = req.params;
+  id = id.slice(1, id.length);
+  await Dealer.findByIdAndDelete(id);
+  res.redirect("http://localhost:3000/viewDealer");
+  // res.send("hii");
+});
+
+app.delete("/customer/delete/:id", jasonParser, async (req, res) => {
+  let { id } = req.params;
+  id = id.slice(1, id.length);
+  await Customer.findByIdAndDelete(id);
+  res.redirect("http://localhost:3000/viewCustomer");
+  // res.send("hii");
+});
+
+app.delete("/purchase/delete/:id", jasonParser, async (req, res) => {
+  let { id } = req.params;
+  id = id.slice(1, id.length);
+  await Purchase.findByIdAndDelete(id);
+  res.redirect("http://localhost:3000/viewPurchase");
+  // res.send("hii");
+});
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////MIDDLEWARES//////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 app.delete("/employee/:id", function (req, res) {
