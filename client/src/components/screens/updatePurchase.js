@@ -126,6 +126,17 @@ const UpdatePurchase = () => {
 
                 <div className="buttondiv">
                   <button className="button1">Update purchase</button>
+                  <form
+                    className="formdelete"
+                    action={
+                      "http://localhost:5000/purchase/delete/:" +
+                      x +
+                      "?_method=DELETE"
+                    }
+                    method="POST"
+                  >
+                    <button className="button2">Delete purchase</button>
+                  </form>
                 </div>
               </form>
             </div>

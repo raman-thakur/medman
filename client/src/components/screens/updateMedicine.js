@@ -141,6 +141,17 @@ const AddMedicine = () => {
                 </div>
                 <div className="buttondiv">
                   <button className="button1">Update medicine</button>
+                  <form
+                    className="formdelete"
+                    action={
+                      "http://localhost:5000/medicine/delete/:" +
+                      x +
+                      "?_method=DELETE"
+                    }
+                    method="POST"
+                  >
+                    <button className="button2">Delete medicine</button>
+                  </form>
                 </div>
               </form>
             </div>

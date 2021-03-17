@@ -104,6 +104,17 @@ const AddCustomer = () => {
                 </div>
                 <div className="buttondiv">
                   <button className="button1">Update customer</button>
+                  <form
+                    className="formdelete"
+                    action={
+                      "http://localhost:5000/customer/delete/:" +
+                      x +
+                      "?_method=DELETE"
+                    }
+                    method="POST"
+                  >
+                    <button className="button2">Delete customer</button>
+                  </form>
                 </div>
               </form>
             </div>
