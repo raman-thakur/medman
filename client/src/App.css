@@ -15,7 +15,7 @@ nav {
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
-  height: 560px;
+  min-height: 560px;
   width: 100%;
 }
 
@@ -90,9 +90,6 @@ input {
 
 .row {
   margin-bottom: 0px !important;
-}
-.card {
-  max-height: 450px !important;
 }
 
 .hh {
@@ -178,15 +175,11 @@ input {
   ); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
 }
 
-
-.formdelete{
-  
+.formdelete {
   /* padding: 1.5% 1.5%; */
   text-align: center;
-  
-  
+
   font-size: 16px;
   margin-right: 1%;
   margin-top: 2%;
-  
 }
