@@ -22,8 +22,6 @@ const http = require("http");
 const cors = require("cors");
 app.use(cors({ credentials: true, origin: "http://localhost:3000" }));
 
-
-
 const saltRounds = 10;
 const PORT = 5000;
 const jwtkey = "ramanjithakur";
@@ -33,15 +31,13 @@ dotenv.config({ path: "./config.env" });
 
 mongoose
   .connect(
-    "mongodb+srv://raman_111:Raman@111@cluster0.ses56.mongodb.net/medman?retryWrites=true&w=majority",
-    {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-      useFindAndModify: false,
-    }
+    "mongodb://raman_111:Raman%40111@cluster0-shard-00-00.ses56.mongodb.net:27017,cluster0-shard-00-01.ses56.mongodb.net:27017,cluster0-shard-00-02.ses56.mongodb.net:27017/medman?ssl=true&replicaSet=atlas-21k2bd-shard-0&authSource=admin&retryWrites=true&w=majority"
   )
   .then(() => {
     console.warn("database connected!!!");
+  })
+  .catch((err) => {
+    console.warn(err);
   });
 
 app.get("/", (req, res) => {
