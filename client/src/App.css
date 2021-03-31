@@ -130,8 +130,8 @@ input {
 
 .buttondiv {
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
 }
 
 .button1 {
@@ -150,9 +150,11 @@ input {
 }
 .button2 {
   background-color: #b60303;
+
   border: none;
   color: white;
   padding: 1.5% 1.5%;
+
   text-align: center;
   text-decoration: none;
   border-radius: 5%;
@@ -161,6 +163,7 @@ input {
   margin-top: 2%;
   cursor: pointer;
   transition: transform 0.2s;
+  margin-left: 1%;
 }
 
 .button1:hover {
@@ -180,6 +183,6 @@ input {
   text-align: center;
 
   font-size: 16px;
-  margin-right: 1%;
-  margin-top: 2%;
+  margin-left: 1%;
+  margin-top: 0%;
 }
