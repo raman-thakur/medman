@@ -103,18 +103,22 @@ function AddDealer() {
                   </div>
                 </div>
                 <div className="buttondiv">
-                  <button className="button1">Update dealer</button>
-                  <form
-                    className="formdelete"
-                    action={
-                      "http://localhost:5000/dealer/delete/:" +
-                      x +
-                      "?_method=DELETE"
-                    }
-                    method="POST"
-                  >
-                    <button className="button2">Delete dealer</button>
-                  </form>
+                  <div>
+                    <button className="button1">Update dealer</button>
+                  </div>
+                  <div>
+                    <form
+                      className="formdelete"
+                      action={
+                        "http://localhost:5000/dealer/delete/:" +
+                        x +
+                        "?_method=DELETE"
+                      }
+                      method="POST"
+                    >
+                      <button className="button2">Delete dealer</button>
+                    </form>
+                  </div>
                 </div>
               </form>
             </div>
