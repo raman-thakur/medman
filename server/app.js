@@ -14,6 +14,7 @@ const User = require("./models/user");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const cookieParser = require("cookie-parser");
+
 app.use(cookieParser());
 const methodOverride = require("method-override");
 app.use(methodOverride("_method"));
@@ -30,16 +31,15 @@ dotenv.config({ path: "./config.env" });
 
 mongoose
   .connect(
-    "mongodb+srv://raman_111:Raman@111@cluster0.ses56.mongodb.net/medman?retryWrites=true&w=majority",
-    {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-      useFindAndModify: false,
-    }
+    "mongodb://raman_111:Raman%40111@cluster0-shard-00-00.ses56.mongodb.net:27017,cluster0-shard-00-01.ses56.mongodb.net:27017,cluster0-shard-00-02.ses56.mongodb.net:27017/medman?ssl=true&replicaSet=atlas-21k2bd-shard-0&authSource=admin&retryWrites=true&w=majority"
   )
   .then(() => {
     console.warn("database connected!!!");
+  })
+  .catch((err) => {
+    console.warn(err);
   });
+
 
 app.get("/", (req, res) => {
   res.send("Hello World");
