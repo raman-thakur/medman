@@ -31,6 +31,7 @@ dotenv.config({ path: "./config.env" });
 
 mongoose
   .connect(
+  //this is because @ are transformed in string
     "mongodb://raman_111:Raman%40111@cluster0-shard-00-00.ses56.mongodb.net:27017,cluster0-shard-00-01.ses56.mongodb.net:27017,cluster0-shard-00-02.ses56.mongodb.net:27017/medman?ssl=true&replicaSet=atlas-21k2bd-shard-0&authSource=admin&retryWrites=true&w=majority"
   )
   .then(() => {
